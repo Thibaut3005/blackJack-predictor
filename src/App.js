@@ -1,80 +1,105 @@
-import react, { useState } from "react";
+import  { useState } from "react";
 import Cards from "./components/Cards";
-import Result from "./components/Result";
+
 
 const App = () => {
-  const nubmerOfDecks = 8;
-  const cardsTotal = 52 * nubmerOfDecks;
+  const numberOfDecks = 8;
+
   let cards = [
+    
     {
-      value: 11,
-      total: 4 * nubmerOfDecks,
+      value: 1000,
+      total: 52 * numberOfDecks,
     },
+  
+    
     {
       value: 2,
-      total: 4 * nubmerOfDecks,
+      total: 4 * numberOfDecks,
     },
     {
       value: 3,
-      total: 4 * nubmerOfDecks,
+      total: 4 * numberOfDecks,
     },
     {
       value: 4,
-      total: 4 * nubmerOfDecks,
+      total: 4 * numberOfDecks,
     },
     {
       value: 5,
-      total: 4 * nubmerOfDecks,
+      total: 4 * numberOfDecks,
     },
     {
       value: 6,
-      total: 4 * nubmerOfDecks,
-    },
-    {
-      value: 6,
-      total: 4 * nubmerOfDecks,
+      total: 4 * numberOfDecks,
     },
     {
       value: 7,
-      total: 4 * nubmerOfDecks,
+      total: 4 * numberOfDecks,
     },
     {
       value: 8,
-      total: 4 * nubmerOfDecks,
+      total: 4 * numberOfDecks,
     },
     {
       value: 9,
-      total: 4 * nubmerOfDecks,
+      total: 4 * numberOfDecks,
     },
     {
       value: 10,
-      total: 4 * nubmerOfDecks,
+      total: 16 * numberOfDecks,
+    }, 
+    {
+      value: 11,
+      total: 4 * numberOfDecks,
     },
   ];
 
-
-  const [total, setTotal] = useState(cardsTotal);
-  const [selfCount, setSelfCount] = useState (0);
-  const [dealerCount, setDealerCount] = useState (0);
-const [aceStateDealer,setAceStateDealer]= useState(false);
-const [aceStateSelf,setAceStateSelf]= useState(false)
+  
 
 
   
- console.log(aceStateSelf);
+  const [selfCount, setSelfCount] = useState(0);
+  const [dealerCount, setDealerCount] = useState(0);
+  const [aceStateDealer, setAceStateDealer] = useState(false);
+  const [aceStateSelf, setAceStateSelf] = useState(false);
+  const [cardsLeft, setCardsLeft] = useState(cards);
+
   
+  const b = cardsLeft.filter(e=> e.value <=  21-selfCount ).reduce((sum, iter) => sum + iter.total, 0)
   
-  console.log(total);
-  
+  const bustChance = 100 - (b/cardsLeft[0].total * 100);
+  console.log(cardsLeft[10].value);
+
   return (
     <>
       <div id="main-container">
-        <Cards total={total} setTotal={setTotal}  count ={selfCount} setcount={setSelfCount}  aceState={aceStateSelf} setAceState={setAceStateSelf}/>
-        <Cards total={total} setTotal={setTotal} count={dealerCount} setcount={setDealerCount}  aceState={aceStateDealer} setAceState={setAceStateDealer}/>{/* 
+        <Cards
+          
+          count={selfCount}
+          setcount={setSelfCount}
+          aceState={aceStateSelf}
+          setAceState={setAceStateSelf}
+          cardsLeft={cardsLeft}
+          setCardsLeft={setCardsLeft}
+        />
+        <Cards
+          
+          count={dealerCount}
+          setcount={setDealerCount}
+          aceState={aceStateDealer}
+          setAceState={setAceStateDealer}
+          cardsLeft={cardsLeft}
+          setCardsLeft={setCardsLeft}
+        />
+        {/* 
     <Cards/> */}
-    <div><p>votre total est de {selfCount}</p>
-    <p>total de cartes du dealer est  {dealerCount}</p>
-     <p>total de cartes est  {total}</p></div>
+        <div id="infos">
+          <p>votre total est de {selfCount}</p>
+          <p>total de cartes du dealer est {dealerCount}</p>
+          <p>total de cartes est {cardsLeft[0].total}</p>
+        </div>
+        <p>chance de bust= {bustChance}</p>
       </div>
     </>
   );

@@ -1,12 +1,20 @@
 import React from "react";
 
 const Cards = (props) => {
-
-  const ace = () => {
     
-  };
+    const cardsupdated = props.cardsLeft
 
   const count = (value) => {
+    
+   cardsupdated[value-1].total -= 1;
+   cardsupdated[0].total -=1;
+    props.setCardsLeft(cardsupdated)
+    if (props.aceState){
+        props.cardsLeft[10].value =11
+            }else{
+                props.cardsLeft[10].value =1
+
+            }
 
 if (value=== 11 && props.count <= 11){
     props.setAceState(true)
@@ -15,17 +23,22 @@ if (value=== 11 && props.count >=11){
     
     value = 1
 }
-
-
-    if ((props.aceState) & (props.count >= 20)) {
+ if ((props.aceState) & (props.count +value > 21)) {
         props.setcount((prevCount) => prevCount + value - 10);
-      props.setTotal((prevCount) => prevCount - 1);
     props.setAceState(false)
       
     } else {
-      props.setTotal((prevCount) => prevCount - 1);
+      
       props.setcount((prevCount) => prevCount + value);
     }
+
+    
+
+    console.log(cardsupdated[value-1].total); 
+
+
+
+    
   };
 
   return (
