@@ -15,20 +15,22 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      
+
   }
   .card-btn{
-  background-size: contain;
-  width: 4rem;
-  height: 8rem;
+  // background-size: contain;
+  // width: 4rem;
+  // height: 8rem;
   
 
   }
   .btn1 {grid-area: btn1;
-    background-image: url("./img/ace_of_spades.png");
+   
     
   }
   .btn2 {grid-area: btn2;
-    background-image: url("./img/2_of_spades.svg");
+  
   }
   .btn3 {grid-area: btn3;
   }

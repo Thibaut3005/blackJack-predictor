@@ -1,18 +1,17 @@
-import  { useState } from "react";
+import { useState } from "react";
 import Cards from "./components/Cards";
-
+import Infos from "./components/Infos";
+import OtherPlayerCards from "./components/OtherPlayerCards";
 
 const App = () => {
   const numberOfDecks = 8;
 
   let cards = [
-    
     {
       value: 1000,
       total: 52 * numberOfDecks,
     },
-  
-    
+
     {
       value: 2,
       total: 4 * numberOfDecks,
@@ -48,34 +47,24 @@ const App = () => {
     {
       value: 10,
       total: 16 * numberOfDecks,
-    }, 
+    },
     {
-      value: 11,
+      value: 1,
       total: 4 * numberOfDecks,
     },
   ];
 
-  
-
-
-  
   const [selfCount, setSelfCount] = useState(0);
   const [dealerCount, setDealerCount] = useState(0);
   const [aceStateDealer, setAceStateDealer] = useState(false);
   const [aceStateSelf, setAceStateSelf] = useState(false);
   const [cardsLeft, setCardsLeft] = useState(cards);
-
-  
-  const b = cardsLeft.filter(e=> e.value <=  21-selfCount ).reduce((sum, iter) => sum + iter.total, 0)
-  
-  const bustChance = 100 - (b/cardsLeft[0].total * 100);
-  console.log(cardsLeft[10].value);
-
+  console.log(cardsLeft);
   return (
     <>
       <div id="main-container">
         <Cards
-          
+        name={"Dealer"}
           count={selfCount}
           setcount={setSelfCount}
           aceState={aceStateSelf}
@@ -84,7 +73,7 @@ const App = () => {
           setCardsLeft={setCardsLeft}
         />
         <Cards
-          
+        name={"Dealer"}
           count={dealerCount}
           setcount={setDealerCount}
           aceState={aceStateDealer}
@@ -92,14 +81,16 @@ const App = () => {
           cardsLeft={cardsLeft}
           setCardsLeft={setCardsLeft}
         />
-        {/* 
-    <Cards/> */}
-        <div id="infos">
-          <p>votre total est de {selfCount}</p>
-          <p>total de cartes du dealer est {dealerCount}</p>
-          <p>total de cartes est {cardsLeft[0].total}</p>
-        </div>
-        <p>chance de bust= {bustChance}</p>
+
+        <OtherPlayerCards 
+        cardsLeft={cardsLeft}
+        setCardsLeft={setCardsLeft}
+         />
+        <Infos
+          selfCount={selfCount}
+          dealerCount={dealerCount}
+          cardsLeft={cardsLeft}
+        />
       </div>
     </>
   );

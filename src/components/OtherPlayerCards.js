@@ -1,30 +1,15 @@
-import React from "react";
-
-const Cards = (props) => {
-  const cardsupdated = props.cardsLeft;
+const OtherPlayerCards = (props) => {
+  const otherCardsupdated = props.cardsLeft;
 
   const count = (value) => {
-    cardsupdated[value - 1].total -= 1;
-    cardsupdated[0].total -= 1;
-    props.setCardsLeft(cardsupdated);
-
-    if (value === 11 && props.count <= 11) {
-      props.setAceState(true);
-    }
-    if (value === 11 && props.count >= 11) {
-      value = 1;
-    }
-    if (props.aceState & (props.count + value > 21)) {
-      props.setcount((prevCount) => prevCount + value - 10);
-      props.setAceState(false);
-    } else {
-      props.setcount((prevCount) => prevCount + value);
-    }
+    otherCardsupdated[value - 1].total -= 1;
+    otherCardsupdated[0].total -= 1;
+    props.setCardsLeft(otherCardsupdated)
+    ;
   };
-
   return (
     <div className="cards-container">
-      <h4 className="name-title">{props.name}</h4>
+      <h4 className="name-title">other Players</h4>
       <button className="card-btn btn1" id="1" onClick={() => count(11)}>
         1
       </button>
@@ -58,4 +43,5 @@ const Cards = (props) => {
     </div>
   );
 };
-export default Cards;
+
+export default OtherPlayerCards;
