@@ -1,11 +1,12 @@
 import { useState } from "react";
 import Cards from "./components/Cards";
 import Infos from "./components/Infos";
-import OtherPlayerCards from "./components/OtherPlayerCards";
+import Buttons from "./components/Buttons";
+// import OtherPlayerCards from "./components/OtherPlayerCards";
 
 const App = () => {
   const numberOfDecks = 8;
-
+ let colors=[0,255]
   let cards = [
     {
       value: 1000,
@@ -59,39 +60,70 @@ const App = () => {
   const [aceStateDealer, setAceStateDealer] = useState(false);
   const [aceStateSelf, setAceStateSelf] = useState(false);
   const [cardsLeft, setCardsLeft] = useState(cards);
-  console.log(cardsLeft);
+  const [trueCount,setTrueCount] = useState(0)
+  const [color,setColor]= useState(colors)
+  
+  
   return (
     <>
-      <div id="main-container">
+    
+      <div id="cards-container">
         <Cards
-        name={"Dealer"}
+          name={"You"}
           count={selfCount}
           setcount={setSelfCount}
           aceState={aceStateSelf}
           setAceState={setAceStateSelf}
           cardsLeft={cardsLeft}
           setCardsLeft={setCardsLeft}
+          trueCount={trueCount}
+          setTrueCount={setTrueCount}
+
         />
         <Cards
-        name={"Dealer"}
+          name={"Dealer"}
           count={dealerCount}
           setcount={setDealerCount}
           aceState={aceStateDealer}
           setAceState={setAceStateDealer}
           cardsLeft={cardsLeft}
           setCardsLeft={setCardsLeft}
+          trueCount={trueCount}
+          setTrueCount={setTrueCount}
         />
 
-        <OtherPlayerCards 
-        cardsLeft={cardsLeft}
-        setCardsLeft={setCardsLeft}
-         />
+        <Cards
+          name={"Other Players"}
+          count={dealerCount}
+          setcount={setDealerCount}
+          aceState={aceStateDealer}
+          setAceState={setAceStateDealer}
+          cardsLeft={cardsLeft}
+          setCardsLeft={setCardsLeft}
+          trueCount={trueCount}
+          setTrueCount={setTrueCount}
+        />
+        <div>
         <Infos
           selfCount={selfCount}
           dealerCount={dealerCount}
           cardsLeft={cardsLeft}
+          trueCount={trueCount}
+          color={color}
+          setColor={setColor}
+         
         />
+        <Buttons
+        cards={cards}
+        setSelfCount={setSelfCount}
+        setDealerCount={setDealerCount}
+        setCardsLeft={setCardsLeft}
+        setTrueCount={setTrueCount}
+        />
+        </div>
+       
       </div>
+      
     </>
   );
 };

@@ -1,7 +1,8 @@
 .cards-container{
     display: grid;
-    width: 45vw;
-    height: 50vh;
+    justify-content: center;
+    // width: 45vw;
+    // height: 50vh;
     grid-template-areas: 
     'title title title title'
     'btn1 btn2 btn3 figure'
@@ -15,36 +16,57 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      
-
+      color: $white;
   }
   .card-btn{
-  // background-size: contain;
-  // width: 4rem;
-  // height: 8rem;
+  background-size: $card-width $card-height;
+  background-color: $white;
+  width: $card-width;
+  height: $card-height;
+  margin: 1px;
+  border : none;
+  border-radius: 5px;
+}
+  .figure{
+    background-color: $white;
+    border : none;
+    border-radius: 5px;
+    width: 6rem;
+   
+    background-size: 6rem 21rem;
+    
+  }
   
 
-  }
+  
   .btn1 {grid-area: btn1;
-   
+    background-image: url("./img/ace_of_spades.png");
     
   }
   .btn2 {grid-area: btn2;
-  
+    background-image: url("./img/2_of_spades.png");
   }
   .btn3 {grid-area: btn3;
+    background-image: url("./img/3_of_spades.png");
   }
   .btn4 {grid-area: btn4;
+    background-image: url("./img/4_of_spades.png");
   }
   .btn5 {grid-area: btn5;
+    background-image: url("./img/5_of_spades.png");
   }
   .btn6 {grid-area: btn6;
+    background-image: url("./img/6_of_spades.png");
   }
   .btn7 {grid-area: btn7;
+    background-image: url("./img/7_of_spades.png");
   }
   .btn8 {grid-area: btn8;
+    background-image: url("./img/8_of_spades.png");
   }
   .btn9 {grid-area: btn9;
+    background-image: url("./img/9_of_spades.png");
   }
   .figure {grid-area: figure;
+    background-image: url("./img/jack_of_spades.png");
   }
