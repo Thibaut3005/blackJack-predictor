@@ -1,9 +1,12 @@
+import {  useEffect } from "react";
 
 const Infos = (props) => {
 
 
 let trueCount = 0
-let color = [...props.color]
+let red =0;
+let green = 255;
+
 
 if (props.trueCount !==0){
 trueCount = (props.trueCount/Math.floor(props.cardsLeft[0].total/52))
@@ -24,26 +27,33 @@ if (trueCount>0){
   let bustChance = 100 - (b / props.cardsLeft[0].total) * 100;
   bustChance = bustChance.toFixed(2);
 
+  
 
-if (bustChance <= 50){
- color[0] = (bustChance/100*255/0.5)
- 
+  if (bustChance <= 65){
+  green=255
+  red= red +((bustChance/100)*255*(225/165.75)) // 165,75 is the number need to have 65 as the middle point in orange 
 }
-else {
-  color[1] = props.color[1] - (bustChance/100*255/0.5)}
- props.setColor(color)
+if (bustChance>= 65 && bustChance<100){
+red =255
+  green= green -((bustChance/100)*255)
+}else{
+  green=255
+  red=0
+
+}
 
 
+
+  useEffect(() => {
+    document.getElementById("bustChance").style.color = `rgb(${red},${green},0)`
+  });
   
-    document.getElementById("bustChance").style.color = `rgb(${props.color[0]},${props.color[1]},0)`
-
-
-
-
-//  let blackJack =false 
+  let bj = null
+ 
+  if (props.blackJackself ){
+    bj ="vous avez fait un BlackJack congrats"}
   
-  
-
+console.log(props.blackJackdealer);
   return (
     <div id="infos">
       <h4 className='name-title'>{props.name}</h4>
@@ -52,6 +62,7 @@ else {
       <p>total de cartes est {props.cardsLeft[0].total}</p>
       <p>chance de bust= <span id='bustChance'>{bustChance}%</span></p>
       <p>true count is currently {trueCount} </p>
+      <p>{bj}</p>
     </div>
   );
 };

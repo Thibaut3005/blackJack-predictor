@@ -1,3 +1,8 @@
+
+#main-container{
+    display: flex;
+    flex-direction: row;
+}
 #cards-container{
     display: flex;
     flex-direction: row;
@@ -5,4 +10,29 @@
     // width: 100vw;
     // height:  700px;
 
+}
+
+#setUpPage{
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.8);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#setUp-form{
+    width: 50vw;
+    height: 50vh;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    border-radius: 5px;
+    background-color: $white;
+}
+#setUp-form label {
+    background-color: $white;
+}
+#setUp-form input{background-color: $white;
 }
