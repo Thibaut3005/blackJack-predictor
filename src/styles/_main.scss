@@ -2,12 +2,13 @@
 #main-container{
     display: flex;
     flex-direction: row;
+    height: 94vh;
 }
 #cards-container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    // width: 100vw;
+    width: 80rem;
     // height:  700px;
 
 }
@@ -15,6 +16,7 @@
 #setUpPage{
     width: 100vw;
     height: 100vh;
+    font-size: 3rem;
     background: rgba(0,0,0,0.8);
     position: fixed;
     display: flex;
@@ -30,9 +32,27 @@
     z-index: 10;
     border-radius: 5px;
     background-color: $white;
+    align-items: center;
+    justify-content: center;
 }
 #setUp-form label {
     background-color: $white;
 }
-#setUp-form input{background-color: $white;
+#setUp-form input{
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    border:solid black 1px; 
+    border-radius: 13px;
+    padding: 0.5rem;
+    margin: 1rem;
 }
+#setUp-submit{
+    
+    align-items: center;
+    background: $dark-mode-main;
+    width: 5rem;
+    cursor: pointer;
+}
+#recpap-div{        width: 24vw;
+    height: 96vh;}

@@ -3,9 +3,16 @@
 }
 #bet-form input{
     background-color: $white;
+    border: none;
+    margin: 1rem;
+    padding:  0.5rem 1rem;
+    width: 5rem;
+    border-radius: 15px;
+
 }
 #bet-submit{
     border: none;
-    background-color: $white;
+    background-color: $dark-mode-main;
+
 
 }

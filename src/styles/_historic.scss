@@ -1,8 +1,36 @@
 #historic{
-    border: solid red 1px;
-    width: 5rem;
-    height: auto;
     display: flex;
+    justify-content: center;
+    
+    position: relative;
+    
+    width: 22vw;
+    height: 65vh;
+    border: solid red 1px;
+    border-radius: 10px;
+    display: flex;
+    
     flex-direction: column;
+    margin: 1rem;
+    bottom: 0;
+    overflow: hidden;
+ 
+}
+#historic-feed{
+    position:absolute;
+    bottom:0;
+}
+.chat{
 
+padding:5px;
+width: 22vw;;
+color: $white;
+
+}
+ .even{
+    background-color: $dark-mode-second;
+    
+}
+.odd{
+    background-color: $dark-mode-third;
 }

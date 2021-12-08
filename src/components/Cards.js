@@ -1,13 +1,30 @@
 import React from "react";
 
+
 const Cards = (props) => {
 
-
-
-
+  let Historic= props.historics;
+  
 
   const count = (value) => {
-    const cardsupdated = [...props.cardsLeft];
+ 
+
+const cardsupdated = [...props.cardsLeft]
+
+
+
+let newEnteries={
+players: props.name,
+number:value,
+n:""
+}
+
+
+
+ Historic.push(newEnteries)
+props.setHistorics(Historic)
+props.setHistoricsLog(Historic)
+  
     cardsupdated[value - 1].total -= 1;
     cardsupdated[0].total -= 1;
     props.setCardsLeft(cardsupdated);
@@ -28,10 +45,11 @@ const Cards = (props) => {
         value = 1;
         aceState = true 
         props.setAceState(aceState);
-      } console.log(aceState);
+      } 
       if (aceState && (props.count + value > 21)) {
         props.setcount((prevCount) => prevCount + value - 10);
         props.setAceState(false);
+        props.setIsAce(true);
       } else {
         props.setcount((prevCount) => prevCount + value);
       }

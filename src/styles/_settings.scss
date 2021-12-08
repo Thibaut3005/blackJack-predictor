@@ -1,13 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap');
+$card-width: 6rem;
+$card-height: 9rem;
+$white : #FFFFFF;
+$dark-mode-second:#282c34;
+$dark-mode-main:#21252b;
+$dark-mode-third:#2a2c31;
+
+
 *{
     font-family: 'Outfit', sans-serif;
     box-sizing: border-box;
     margin: 0;
     padding:0;
-    background-color: #0B191E;
+    background-color: $dark-mode-main;
 
 
 }
-$card-width: 4rem;
-$card-height: 7rem;
-$white : #FFFFFF;

@@ -1,13 +1,13 @@
 const Modal = (props) => {
     
-    
-    let Bankroll =0
-    let NumberOfdecks=0
+  let NumberOfdecks= 8
+let Bankroll =100    
 
     const handleSubmit = () =>{
-        console.log(Bankroll)
-        console.log(NumberOfdecks);
-        props.setShowModal(false)
+      props.setBankroll(Bankroll)
+      props.setNumberOfDecks(NumberOfdecks)
+      props.setShowModal(false)
+
     }
     
     
@@ -16,7 +16,7 @@ const Modal = (props) => {
    {props.showModal ? <div id='setUpPage'>
 
    <form onSubmit={handleSubmit} id="setUp-form">
-         <label>Enter your name:
+         <label> 
            <input placeholder='your bankroll '
              type="number" 
              
@@ -28,7 +28,7 @@ const Modal = (props) => {
              onChange={(e) => NumberOfdecks = e.target.value}
            />
          </label>
-         <input type="submit" id="setUp-submit" />
+         <input type="submit" id="setUp-submit" value="Valider"/>
        </form>
     
        </div> : null}  </>

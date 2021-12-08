@@ -1,25 +1,29 @@
 import {useState} from 'react'
 
 
-const Calcul =(props) =>{
-    const [bet, setBet] = useState(0);
-    console.log(bet);
+const Bet =(props) =>{
+  
+    let newBet=0
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`The name you entered was: ${bet}`)
+    props.setBet(newBet)
+
+
   }
     return (
         <form onSubmit={handleSubmit} id="bet-form">
-          <label>Enter your name:
+
+
+          <label>Enter your bet: 
             <input placeholder='your bet '
               type="number" 
               
-              onChange={(e) => setBet(e.target.value)}
+              onChange={(e) => newBet=e.target.value}
             />
           </label>
           <input type="submit" id="bet-submit" />
         </form>
       )
 }
-export default Calcul
+export default Bet

@@ -17,8 +17,6 @@ if (trueCount>0){
   trueCount =`+ ${trueCount}`
 }
 
- 
-    
   const b = props.cardsLeft
     .filter((e) => e.value <= 21 - props.selfCount)
     .reduce((sum, iter) => sum + iter.total, 0);
@@ -26,8 +24,6 @@ if (trueCount>0){
 
   let bustChance = 100 - (b / props.cardsLeft[0].total) * 100;
   bustChance = bustChance.toFixed(2);
-
-  
 
   if (bustChance <= 65){
   green=255
@@ -53,7 +49,7 @@ red =255
   if (props.blackJackself ){
     bj ="vous avez fait un BlackJack congrats"}
   
-console.log(props.blackJackdealer);
+
   return (
     <div id="infos">
       <h4 className='name-title'>{props.name}</h4>
@@ -62,6 +58,7 @@ console.log(props.blackJackdealer);
       <p>total de cartes est {props.cardsLeft[0].total}</p>
       <p>chance de bust= <span id='bustChance'>{bustChance}%</span></p>
       <p>true count is currently {trueCount} </p>
+      <p>your bet is {props.bet} €</p>
       <p>{bj}</p>
     </div>
   );
